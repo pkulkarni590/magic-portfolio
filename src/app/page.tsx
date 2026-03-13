@@ -10,8 +10,9 @@ import {
   Schema,
   Meta,
   Line,
+  ToggleButton,
 } from "@once-ui-system/core";
-import { home, about, person, baseURL, routes } from "@/resources";
+import { home, about, person, baseURL, routes, work, blog, gallery } from "@/resources";
 import { Mailchimp } from "@/components";
 import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
@@ -74,6 +75,35 @@ export default function Home() {
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
+          </RevealFx>
+          <RevealFx translateY="8" delay={0.3} horizontal="center" paddingBottom="32">
+            <Row
+              background="page"
+              border="neutral-alpha-weak"
+              radius="m-4"
+              shadow="l"
+              padding="4"
+              horizontal="center"
+              gap="4"
+              textVariant="body-default-s"
+            >
+              {routes["/"] && (
+                <ToggleButton prefixIcon="home" href="/" />
+              )}
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
+              {routes["/about"] && (
+                <ToggleButton prefixIcon="person" href="/about" label={about.label} />
+              )}
+              {routes["/work"] && (
+                <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
+              )}
+              {routes["/blog"] && (
+                <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
+              )}
+              {routes["/gallery"] && (
+                <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
+              )}
+            </Row>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
             <Button
