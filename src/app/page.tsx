@@ -42,27 +42,39 @@ export default function Home() {
         }}
       />
       <Column fillWidth horizontal="center" gap="l" paddingY="32">
-        {/* Portrait + Intro side by side */}
-        <Row fillWidth gap="xl" vertical="center" horizontal="center" s={{ direction: "column", horizontal: "center" }}>
-          {/* Portrait shifted slightly right */}
-          <RevealFx translateY="4">
-            <Avatar src={person.avatar} size="xl" style={{ width: "160px", height: "160px", marginLeft: "48px" }} />
+        {/* Portrait centered, generous size */}
+        <RevealFx translateY="4">
+          <Avatar
+            src={person.avatar}
+            size="xl"
+            style={{ width: "120px", height: "120px" }}
+          />
+        </RevealFx>
+
+        {/* Name + subline centered below */}
+        <Column fillWidth horizontal="center" gap="s">
+          <RevealFx translateY="4" delay={0.1}>
+            <Heading
+              wrap="balance"
+              variant="display-strong-l"
+              style={{ textAlign: "center" }}
+            >
+              {person.name}
+            </Heading>
           </RevealFx>
-          {/* Name + intro */}
-          <Column flex={1} gap="m">
-            <RevealFx translateY="4">
-              <Heading wrap="balance" variant="display-strong-l">
-                {person.name}
-              </Heading>
-            </RevealFx>
-            <RevealFx translateY="8" delay={0.2}>
-              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                {home.subline}
-              </Text>
-            </RevealFx>
-          </Column>
-        </Row>
-        {/* Nav centered below both portrait and intro */}
+          <RevealFx translateY="8" delay={0.2}>
+            <Text
+              wrap="balance"
+              onBackground="neutral-weak"
+              variant="heading-default-xl"
+              style={{ textAlign: "center", maxWidth: "480px" }}
+            >
+              {home.subline}
+            </Text>
+          </RevealFx>
+        </Column>
+
+        {/* Nav pill centered below */}
         <RevealFx translateY="8" delay={0.3} horizontal="center">
           <Row
             background="page"
