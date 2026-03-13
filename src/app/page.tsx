@@ -1,11 +1,9 @@
 import {
   Heading,
   Text,
-  Button,
   Avatar,
   RevealFx,
   Column,
-  Badge,
   Row,
   Schema,
   Meta,
@@ -43,52 +41,36 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="m">
-        <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
-              >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
+      <Row fillWidth gap="xl" vertical="center" paddingY="32" s={{ direction: "column", horizontal: "center" }}>
+        {/* Portrait */}
+        <RevealFx translateY="4">
+          <Avatar src={person.avatar} size="xl" style={{ width: "160px", height: "160px" }} />
+        </RevealFx>
+        {/* Name + intro + nav */}
+        <Column flex={1} gap="l">
+          <RevealFx translateY="4">
             <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
+              {person.name}
             </Heading>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="center" paddingBottom="32">
+          <RevealFx translateY="8" delay={0.2}>
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
             </Text>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.3} horizontal="center" paddingBottom="32">
+          <RevealFx translateY="8" delay={0.3}>
             <Row
               background="page"
               border="neutral-alpha-weak"
               radius="m-4"
               shadow="l"
               padding="4"
-              horizontal="center"
               gap="4"
               textVariant="body-default-s"
+              fitWidth
             >
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" />
+                <ToggleButton prefixIcon="home" href="/" selected />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -105,31 +87,8 @@ export default function Home() {
               )}
             </Row>
           </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="secondary"
-              size="m"
-              weight="default"
-              arrowIcon
-            >
-              <Row gap="8" vertical="center" paddingRight="4">
-                {about.avatar.display && (
-                  <Avatar
-                    marginRight="8"
-                    style={{ marginLeft: "-0.75rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Row>
-            </Button>
-          </RevealFx>
         </Column>
-      </Column>
+      </Row>
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
