@@ -41,54 +41,58 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Row fillWidth gap="xl" vertical="center" paddingY="32" s={{ direction: "column", horizontal: "center" }}>
-        {/* Portrait */}
-        <RevealFx translateY="4">
-          <Avatar src={person.avatar} size="xl" style={{ width: "160px", height: "160px" }} />
-        </RevealFx>
-        {/* Name + intro + nav */}
-        <Column flex={1} gap="l">
+      <Column fillWidth horizontal="center" gap="l" paddingY="32">
+        {/* Portrait + Intro side by side */}
+        <Row fillWidth gap="xl" vertical="center" horizontal="center" s={{ direction: "column", horizontal: "center" }}>
+          {/* Portrait shifted slightly right */}
           <RevealFx translateY="4">
-            <Heading wrap="balance" variant="display-strong-l">
-              {person.name}
-            </Heading>
+            <Avatar src={person.avatar} size="xl" style={{ width: "160px", height: "160px", marginLeft: "48px" }} />
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2}>
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx translateY="8" delay={0.3}>
-            <Row
-              background="page"
-              border="neutral-alpha-weak"
-              radius="m-4"
-              shadow="l"
-              padding="4"
-              gap="4"
-              textVariant="body-default-s"
-              fitWidth
-            >
-              {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected />
-              )}
-              <Line background="neutral-alpha-medium" vert maxHeight="24" />
-              {routes["/about"] && (
-                <ToggleButton prefixIcon="person" href="/about" label={about.label} />
-              )}
-              {routes["/work"] && (
-                <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
-              )}
-              {routes["/blog"] && (
-                <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
-              )}
-              {routes["/gallery"] && (
-                <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
-              )}
-            </Row>
-          </RevealFx>
-        </Column>
-      </Row>
+          {/* Name + intro */}
+          <Column flex={1} gap="m">
+            <RevealFx translateY="4">
+              <Heading wrap="balance" variant="display-strong-l">
+                {person.name}
+              </Heading>
+            </RevealFx>
+            <RevealFx translateY="8" delay={0.2}>
+              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                {home.subline}
+              </Text>
+            </RevealFx>
+          </Column>
+        </Row>
+        {/* Nav centered below both portrait and intro */}
+        <RevealFx translateY="8" delay={0.3} horizontal="center">
+          <Row
+            background="page"
+            border="neutral-alpha-weak"
+            radius="m-4"
+            shadow="l"
+            padding="4"
+            gap="4"
+            textVariant="body-default-s"
+            fitWidth
+          >
+            {routes["/"] && (
+              <ToggleButton prefixIcon="home" href="/" selected />
+            )}
+            <Line background="neutral-alpha-medium" vert maxHeight="24" />
+            {routes["/about"] && (
+              <ToggleButton prefixIcon="person" href="/about" label={about.label} />
+            )}
+            {routes["/work"] && (
+              <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
+            )}
+            {routes["/blog"] && (
+              <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
+            )}
+            {routes["/gallery"] && (
+              <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
+            )}
+          </Row>
+        </RevealFx>
+      </Column>
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>
