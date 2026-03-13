@@ -6,8 +6,9 @@ const person: Person = {
   lastName: "Kulkarni",
   name: `Prathmesh Kulkarni`,
   role: "AI Product Management",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/Portrait.png",
   email: "pkulkarni590@gmail.com",
+  institute_email: "pkulka12@gmail.com",
   location: "America/New_York", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["English", "Hindi", "Marathi"], // optional: Leave the array empty if you don't want to display languages
 };
@@ -37,14 +38,14 @@ const social: Social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
+    link: "https://www.instagram.com/",
     essential: false,
   },
   {
     name: "Threads",
     icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-    essential: true,
+    link: "https://www.threads.com/",
+    essential: false,
   },
   {
     name: "Email",
@@ -60,23 +61,23 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building bridges between product and technology</>,
   featured: {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
+        <strong className="ml-4">CounselAI</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Featured work
         </Text>
       </Row>
     ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    href: "/work/counselai-ai-driven-legal-workflows",
   },
   subline: (
     <>
-    I'm Selene, a design engineer at <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+    I'm Prathmesh, An AI Product Management Intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where I bridge intelligence and impact.
 </>
   ),
 };
@@ -102,9 +103,7 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Prathmesh has shipped large-scale data infrastructure at Druva. Now he's on the other side of the table, shaping AI products as a PM, with the instincts of an engineer who's seen what actually gets built.
       </>
     ),
   },
@@ -113,41 +112,59 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "CounselAI",
+        timeframe: "December 2025 - Present",
+        role: "AI Product Management Intern",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Built AI-driven workflows for file scanning, audio processing, and cross-file image
+            detection, supporting 3 live pilot projects with lawyers and improving document
+            understanding and response accuracy.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Improved system performance by implementing parallel AWS Lambda processing and semantic
+            vector-based responsiveness scoring, reducing end-to-end processing time by over 60%.
+          </>,
+          <>
+            Worked directly with lawyers and founders to define product requirements and validate
+            real-world legal use cases, shaping core AI product features in a pre-revenue startup.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Druva Data Solutions",
+        timeframe: "July 2022 - May 2025",
+        role: "Software Development Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Led feature efforts addressing 30+ security vulnerabilities using Snyk, achieving
+            FedRAMP compliance and enabling federal client acquisition.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Developed large-file download capability in Flask/REST APIs, solving client failures
+            above 3 GB; directly benefited three top-five customers.
+          </>,
+          <>
+            Prioritized and delivered 18 Legalhold Flask API enhancements, cutting server response
+            times by 25% and enabling 300+ enterprise users to complete compliance tasks 40% faster.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Srivenk Farms",
+        timeframe: "October 2021 - May 2022",
+        role: "Data Analysis Intern",
+        achievements: [
+          <>
+            Built a demand-driven AI model for predictive pricing and demand forecasting, boosting
+            average selling price by 31% from $0.94/kg to $1.23/kg and unlocking $34.8K in
+            incremental revenue.
+          </>,
+          <>
+            Developed a cross-platform Flutter mobile app with a Python backend integrating REST
+            APIs and data pipelines for real-time agricultural market data analytics.
           </>,
         ],
         images: [],
@@ -159,12 +176,12 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Johns Hopkins University",
+        description: <>Master Of Science In Engineering Management.</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Pune Institute Of Computer Technology",
+        description: <>Bachelor of Engineering in Information Technology.</>,
       },
     ],
   },
@@ -173,60 +190,41 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
+        title: "AI & Machine Learning",
         description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
+          <>Building LLM-powered workflows, agentic AI systems, and vector embedding pipelines for real-world product use cases.</>
         ),
         tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
+          { name: "Python", icon: "python" },
+          { name: "LLMs", icon: "openai" },
+          { name: "AWS Lambda", icon: "aws" },
+          { name: "Docker", icon: "docker" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        title: "Next.js",
+        title: "Product Management",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Defining roadmaps, writing PRDs, and working cross-functionally to ship AI products from 0 to 1.</>
         ),
         tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
+          { name: "Agile", icon: "jira" },
+          { name: "Figma", icon: "figma" },
         ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        images: [],
+      },
+      {
+        title: "Data & Backend Engineering",
+        description: (
+          <>Building data pipelines, REST APIs, and analytics systems using Python, SQL, Flask, and Tableau.</>
+        ),
+        tags: [
+          { name: "Python", icon: "python" },
+          { name: "SQL", icon: "postgresql" },
+          { name: "Flask", icon: "flask" },
+          { name: "Tableau", icon: "tableau" },
         ],
+        images: [],
       },
     ],
   },
