@@ -47,11 +47,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid messages" }, { status: 400 });
     }
 
+    // Anthropic API requires conversations to start with a user message
+    const firstUserIndex = messages.findIndex((m: { role: string }) => m.role === "user");
+    const apiMessages = firstUserIndex >= 0 ? messages.slice(firstUserIndex) : messages;
+
     const response = await client.messages.create({
       model: "claude-haiku-4-5-20251001",
       max_tokens: 512,
       system: SYSTEM_PROMPT,
-      messages,
+      messages: apiMessages,
     });
 
     const text =
