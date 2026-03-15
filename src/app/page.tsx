@@ -41,70 +41,61 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Column fillWidth horizontal="center" gap="l" paddingY="32">
-        {/* Portrait centered, generous size */}
-        <RevealFx translateY="4">
-          <Avatar
-            src={person.avatar}
-            size="xl"
-            style={{ width: "120px", height: "120px" }}
-          />
-        </RevealFx>
-
-        {/* Name + subline centered below */}
-        <Column fillWidth horizontal="center" gap="s">
-          <RevealFx translateY="4" delay={0.1}>
-            <Heading
-              wrap="balance"
-              variant="display-strong-l"
-              style={{ textAlign: "center" }}
-            >
-              {person.name}
-            </Heading>
+      <Row fillWidth horizontal="center" paddingY="32">
+        <Row gap="xl" vertical="center" s={{ direction: "column", horizontal: "center" }} style={{ maxWidth: "720px", width: "100%" }}>
+          {/* Portrait — left side */}
+          <RevealFx translateY="4">
+            <Avatar
+              src={person.avatar}
+              size="xl"
+              style={{ width: "140px", height: "140px", flexShrink: 0 }}
+            />
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2}>
-            <Text
-              wrap="balance"
-              onBackground="neutral-weak"
-              variant="heading-default-xl"
-              style={{ textAlign: "center", maxWidth: "480px" }}
-            >
-              {home.subline}
-            </Text>
-          </RevealFx>
-        </Column>
 
-        {/* Nav pill centered below */}
-        <RevealFx translateY="8" delay={0.3} horizontal="center">
-          <Row
-            background="page"
-            border="neutral-alpha-weak"
-            radius="m-4"
-            shadow="l"
-            padding="4"
-            gap="4"
-            textVariant="body-default-s"
-            fitWidth
-          >
-            {routes["/"] && (
-              <ToggleButton prefixIcon="home" href="/" selected />
-            )}
-            <Line background="neutral-alpha-medium" vert maxHeight="24" />
-            {routes["/about"] && (
-              <ToggleButton prefixIcon="person" href="/about" label={about.label} />
-            )}
-            {routes["/work"] && (
-              <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
-            )}
-            {routes["/blog"] && (
-              <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
-            )}
-            {routes["/gallery"] && (
-              <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
-            )}
-          </Row>
-        </RevealFx>
-      </Column>
+          {/* Name + subline + nav — right of photo */}
+          <Column gap="m" style={{ flex: 1 }}>
+            <RevealFx translateY="4" delay={0.1}>
+              <Heading wrap="balance" variant="display-strong-l">
+                {person.name}
+              </Heading>
+            </RevealFx>
+            <RevealFx translateY="8" delay={0.2}>
+              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                {home.subline}
+              </Text>
+            </RevealFx>
+            <RevealFx translateY="8" delay={0.3}>
+              <Row
+                background="page"
+                border="neutral-alpha-weak"
+                radius="m-4"
+                shadow="l"
+                padding="4"
+                gap="4"
+                textVariant="body-default-s"
+                fitWidth
+              >
+                {routes["/"] && (
+                  <ToggleButton prefixIcon="home" href="/" selected />
+                )}
+                <Line background="neutral-alpha-medium" vert maxHeight="24" />
+                {routes["/about"] && (
+                  <ToggleButton prefixIcon="person" href="/about" label={about.label} />
+                )}
+                {routes["/work"] && (
+                  <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
+                )}
+                {routes["/blog"] && (
+                  <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
+                )}
+                {routes["/gallery"] && (
+                  <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
+                )}
+              </Row>
+            </RevealFx>
+          </Column>
+        </Row>
+      </Row>
       <RevealFx translateY="16" delay={0.6}>
         <Projects range={[1, 1]} />
       </RevealFx>

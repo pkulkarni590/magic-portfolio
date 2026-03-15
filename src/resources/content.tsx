@@ -77,8 +77,8 @@ const home: Home = {
   },
   subline: (
     <>
-    I'm Prathmesh, An AI Product Management Intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where I bridge intelligence and impact.
-</>
+      I'm Prathmesh, a master's student at <Text as="span" size="xl" weight="strong">Johns Hopkins University</Text> and AI PM intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where engineering instinct meets product thinking.
+    </>
   ),
 };
 
