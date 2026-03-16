@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Kulkarni",
   name: `Prathmesh Kulkarni`,
   role: "AI Product Management",
-  avatar: "/images/Potrait.PNG",
+  avatar: "/images/Portrait.png",
   email: "pkulkarni590@gmail.com",
   institute_email: "pkulka12@gmail.com",
   location: "America/New_York", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -38,14 +38,14 @@ const social: Social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/",
+    link: "https://www.instagram.com/once_ui/",
     essential: false,
   },
   {
     name: "Threads",
     icon: "threads",
-    link: "https://www.threads.com/",
-    essential: false,
+    link: "https://www.threads.com/@once_ui",
+    essential: true,
   },
   {
     name: "Email",
@@ -77,8 +77,8 @@ const home: Home = {
   },
   subline: (
     <>
-      I'm Prathmesh, a master's student at <Text as="span" size="xl" weight="strong">Johns Hopkins University</Text> and AI PM intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where engineering instinct meets product thinking.
-    </>
+    I'm Prathmesh, An AI Product Management Intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where I bridge intelligence and impact.
+</>
   ),
 };
 
@@ -250,51 +250,39 @@ const work: Work = {
 
 const gallery: Gallery = {
   path: "/gallery",
-  label: "Gallery",
-  title: `Photo gallery – ${person.name}`,
-  description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
+  label: "Life",
+  title: `Life Beyond Work – ${person.name}`,
+  description: `A glimpse into life outside of work by ${person.name}`,
   images: [
     {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
+      src: "/images/gallery/ironman-1.png",
+      alt: "Ironman",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
+      src: "/images/gallery/ironman-2.png",
+      alt: "Ironman",
       orientation: "vertical",
     },
     {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
+      src: "/images/gallery/outdoor-1.jpg",
+      alt: "Outdoor adventure",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
+      src: "/images/gallery/outdoor-2.jpg",
+      alt: "Outdoor adventure",
       orientation: "horizontal",
     },
     {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
+      src: "/images/gallery/outdoor-3.jpg",
+      alt: "Outdoor adventure",
+      orientation: "horizontal",
+    },
+    {
+      src: "/images/gallery/outdoor-4.jpg",
+      alt: "Outdoor adventure",
+      orientation: "horizontal",
     },
   ],
 };

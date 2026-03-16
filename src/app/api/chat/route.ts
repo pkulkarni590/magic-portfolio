@@ -1,9 +1,10 @@
-import Anthropic from "@anthropic-ai/sdk";
 import { NextRequest, NextResponse } from "next/server";
 
-const client = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
+const GROQ_API_KEY = process.env.GROQ_API_KEY;
+const GROQ_MODEL = "qwen-qwq-32b";
+
+const OLLAMA_URL = process.env.OLLAMA_URL || "http://localhost:11434";
+const OLLAMA_MODEL = process.env.OLLAMA_MODEL || "qwen2.5";
 
 const SYSTEM_PROMPT = `You are an AI assistant representing Prathmesh Kulkarni on his personal portfolio website. Your role is to answer questions about Prathmesh in a friendly, professional tone.
 
@@ -47,25 +48,47 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Invalid messages" }, { status: 400 });
     }
 
-    // Anthropic API requires conversations to start with a user message
-    const firstUserIndex = messages.findIndex((m: { role: string }) => m.role === "user");
-    const apiMessages = firstUserIndex >= 0 ? messages.slice(firstUserIndex) : messages;
+    let text = "";
 
-    const response = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 512,
-      system: SYSTEM_PROMPT,
-      messages: apiMessages,
-    });
-
-    const text =
-      response.content[0].type === "text" ? response.content[0].text : "";
+    if (GROQ_API_KEY) {
+      // Production: use Groq (works on Vercel)
+      const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${GROQ_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: GROQ_MODEL,
+          max_tokens: 512,
+          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+        }),
+      });
+      if (!res.ok) throw new Error(`Groq error ${res.status}: ${await res.text()}`);
+      const data = await res.json();
+      text = data.choices[0]?.message?.content ?? "";
+    } else {
+      // Local dev: use Ollama
+      const res = await fetch(`${OLLAMA_URL}/api/chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: OLLAMA_MODEL,
+          stream: false,
+          messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+        }),
+      });
+      if (!res.ok) throw new Error(`Ollama error ${res.status}: ${await res.text()}`);
+      const data = await res.json();
+      text = data.message?.content ?? "";
+    }
 
     return NextResponse.json({ message: text });
   } catch (error) {
-    console.error("Chat API error:", error);
+    const message = error instanceof Error ? error.message : String(error);
+    console.error("Chat API error:", message);
     return NextResponse.json(
-      { error: "Failed to get response" },
+      { error: message },
       { status: 500 },
     );
   }

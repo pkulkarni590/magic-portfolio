@@ -58,15 +58,15 @@ export function ChatWidget() {
         ...prev,
         {
           role: "assistant",
-          content: data.message || "Sorry, I couldn't get a response.",
+          content: data.message || `Error: ${data.error || "No response"}`,
         },
       ]);
-    } catch {
+    } catch (err) {
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content: "Something went wrong. Please try again.",
+          content: `Network error: ${err instanceof Error ? err.message : String(err)}`,
         },
       ]);
     } finally {
@@ -150,7 +150,7 @@ export function ChatWidget() {
                   color: "var(--neutral-on-background-weak)",
                 }}
               >
-                Powered by Claude AI
+                Powered by Ollama (local AI)
               </div>
             </div>
             <button
