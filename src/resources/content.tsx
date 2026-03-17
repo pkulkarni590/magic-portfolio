@@ -5,8 +5,8 @@ const person: Person = {
   firstName: "Prathmesh",
   lastName: "Kulkarni",
   name: `Prathmesh Kulkarni`,
-  role: "AI Product Management",
-  avatar: "/images/Portrait.png",
+  role: "AI Product Management Intern",
+  avatar: "/images/Potrait.PNG",
   email: "pkulkarni590@gmail.com",
   institute_email: "pkulka12@gmail.com",
   location: "America/New_York", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
@@ -38,8 +38,8 @@ const social: Social = [
   {
     name: "Instagram",
     icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
+    link: "https://www.instagram.com/prathmesh_k__",
+    essential: true,
   },
   {
     name: "Threads",
@@ -61,7 +61,7 @@ const home: Home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between product and technology</>,
+  headline: <>Building AI products that actually matter.</>,
   featured: {
     display: true,
     title: (
@@ -75,11 +75,7 @@ const home: Home = {
     ),
     href: "/work/counselai-ai-driven-legal-workflows",
   },
-  subline: (
-    <>
-    I'm Prathmesh, An AI Product Management Intern at <Text as="span" size="xl" weight="strong">CounselAI</Text>, where I bridge intelligence and impact.
-</>
-  ),
+  subline: <>Building AI products that actually matter.</>,
 };
 
 const about: About = {
@@ -114,6 +110,7 @@ const about: About = {
       {
         company: "CounselAI",
         timeframe: "December 2025 - Present",
+        location: "Baltimore, US",
         role: "AI Product Management Intern",
         achievements: [
           <>
@@ -135,6 +132,7 @@ const about: About = {
       {
         company: "Druva Data Solutions",
         timeframe: "July 2022 - May 2025",
+        location: "Pune, India",
         role: "Software Development Engineer",
         achievements: [
           <>
@@ -155,6 +153,7 @@ const about: About = {
       {
         company: "Srivenk Farms",
         timeframe: "October 2021 - May 2022",
+        location: "Pune, India",
         role: "Data Analysis Intern",
         achievements: [
           <>
@@ -177,11 +176,11 @@ const about: About = {
     institutions: [
       {
         name: "Johns Hopkins University",
-        description: <>Master Of Science In Engineering Management.</>,
+        description: <>Master of Science in Engineering Management · Baltimore, US · Aug 2025 – Expected Dec 2026</>,
       },
       {
-        name: "Pune Institute Of Computer Technology",
-        description: <>Bachelor of Engineering in Information Technology.</>,
+        name: "Pune Institute of Computer Technology",
+        description: <>Bachelor of Engineering in Information Technology · Pune, India · Aug 2018 – May 2022</>,
       },
     ],
   },
@@ -253,38 +252,7 @@ const gallery: Gallery = {
   label: "Life",
   title: `Life Beyond Work – ${person.name}`,
   description: `A glimpse into life outside of work by ${person.name}`,
-  images: [
-    {
-      src: "/images/gallery/ironman-1.png",
-      alt: "Ironman",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/ironman-2.png",
-      alt: "Ironman",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/outdoor-1.jpg",
-      alt: "Outdoor adventure",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/outdoor-2.jpg",
-      alt: "Outdoor adventure",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/outdoor-3.jpg",
-      alt: "Outdoor adventure",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/outdoor-4.jpg",
-      alt: "Outdoor adventure",
-      orientation: "horizontal",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

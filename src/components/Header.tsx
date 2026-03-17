@@ -42,10 +42,76 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" })
 
 export default TimeDisplay;
 
+const contactBtnStyle: React.CSSProperties = {
+  display: "inline-block",
+  padding: "7px 18px",
+  borderRadius: "9999px",
+  border: "1px solid rgba(255,255,255,0.15)",
+  background: "rgba(255,255,255,0.07)",
+  backdropFilter: "blur(8px)",
+  color: "var(--neutral-on-background-strong)",
+  fontSize: "13px",
+  fontWeight: 500,
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  transition: "background 0.15s ease, box-shadow 0.15s ease",
+};
+
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const isHome = pathname === "/";
 
-  if (pathname === "/") return null;
+  if (isHome) {
+    return (
+      <header
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "24px 32px",
+          background: "#ffffff",
+          borderBottom: "1px solid rgba(0,0,0,0.08)",
+          fontFamily: "'Inter', 'Helvetica Neue', Arial, sans-serif",
+          boxSizing: "border-box",
+        }}
+      >
+        <a
+          href="/"
+          style={{
+            fontSize: "21px",
+            fontWeight: 600,
+            color: "#0a0a0a",
+            textDecoration: "none",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Prathmesh Kulkarni
+        </a>
+
+        <a
+          href="/contact"
+          style={{
+            fontSize: "18px",
+            fontWeight: 500,
+            color: "#0a0a0a",
+            textDecoration: "none",
+            letterSpacing: "0.03em",
+            opacity: 0.75,
+            transition: "opacity 0.15s ease",
+          }}
+          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.opacity = "1"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.opacity = "0.75"; }}
+        >
+          Contact
+        </a>
+      </header>
+    );
+  }
 
   return (
     <>
@@ -188,6 +254,20 @@ export const Header = () => {
             <Flex s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
+            <a
+              href="/contact"
+              style={contactBtnStyle}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.14)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.2)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+            >
+              Contact Me
+            </a>
           </Flex>
         </Flex>
       </Row>

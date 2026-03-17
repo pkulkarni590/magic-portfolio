@@ -1,19 +1,28 @@
 import {
   Heading,
   Text,
-  Avatar,
   RevealFx,
   Column,
   Row,
   Schema,
   Meta,
   Line,
-  ToggleButton,
 } from "@once-ui-system/core";
 import { home, about, person, baseURL, routes, work, blog, gallery } from "@/resources";
 import { Mailchimp } from "@/components";
-import { Projects } from "@/components/work/Projects";
 import { Posts } from "@/components/blog/Posts";
+import { ChatTriggerBtn } from "@/components/ChatTriggerBtn";
+function NavBtn({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      className="hero-nav-btn"
+      style={{ textDecoration: "none" }}
+    >
+      {label}
+    </a>
+  );
+}
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -27,7 +36,27 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center">
+    <Column maxWidth="m" gap="xl" paddingY="12" horizontal="center" style={{ paddingTop: "91px" }}>
+      <style>{`
+        .hero-nav-btn {
+          display: inline-block;
+          padding: 11px 24px;
+          border-radius: 9999px;
+          border: 1px solid rgba(255,255,255,0.12);
+          background: rgba(255,255,255,0.05);
+          backdrop-filter: blur(8px);
+          color: var(--neutral-on-background-strong);
+          font-size: 15.4px;
+          font-weight: 500;
+          white-space: nowrap;
+          transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+        }
+        .hero-nav-btn:hover {
+          background: rgba(255,255,255,0.12);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+        }
+      `}</style>
       <Schema
         as="webPage"
         baseURL={baseURL}
@@ -41,18 +70,23 @@ export default function Home() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Row fillWidth horizontal="center" paddingY="32">
-        <Row gap="xl" vertical="center" s={{ direction: "column", horizontal: "center" }} style={{ maxWidth: "720px", width: "100%" }}>
-          {/* Portrait — left side */}
+      <Column fillWidth horizontal="center" gap="l" paddingY="32">
+        {/* Photo + intro side by side */}
+        <Row gap="xl" vertical="center" horizontal="center" s={{ direction: "column", horizontal: "center" }} style={{ maxWidth: "720px", width: "100%" }}>
           <RevealFx translateY="4">
-            <Avatar
+            <img
               src={person.avatar}
-              size="xl"
-              style={{ width: "140px", height: "140px", flexShrink: 0 }}
+              alt={person.name}
+              style={{
+                width: "339px",
+                height: "auto",
+                flexShrink: 0,
+                borderRadius: "0px",
+                objectFit: "cover",
+              }}
             />
           </RevealFx>
 
-          {/* Name + subline + nav — right of photo */}
           <Column gap="m" style={{ flex: 1 }}>
             <RevealFx translateY="4" delay={0.1}>
               <Heading wrap="balance" variant="display-strong-l">
@@ -64,41 +98,21 @@ export default function Home() {
                 {home.subline}
               </Text>
             </RevealFx>
-            <RevealFx translateY="8" delay={0.3}>
-              <Row
-                background="page"
-                border="neutral-alpha-weak"
-                radius="m-4"
-                shadow="l"
-                padding="4"
-                gap="4"
-                textVariant="body-default-s"
-                fitWidth
-              >
-                {routes["/"] && (
-                  <ToggleButton prefixIcon="home" href="/" selected />
-                )}
-                <Line background="neutral-alpha-medium" vert maxHeight="24" />
-                {routes["/about"] && (
-                  <ToggleButton prefixIcon="person" href="/about" label={about.label} />
-                )}
-                {routes["/work"] && (
-                  <ToggleButton prefixIcon="grid" href="/work" label={work.label} />
-                )}
-                {routes["/blog"] && (
-                  <ToggleButton prefixIcon="book" href="/blog" label={blog.label} />
-                )}
-                {routes["/gallery"] && (
-                  <ToggleButton prefixIcon="gallery" href="/gallery" label={gallery.label} />
-                )}
-              </Row>
-            </RevealFx>
           </Column>
         </Row>
-      </Row>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
-      </RevealFx>
+
+        {/* Nav buttons — centered below both photo and intro */}
+        <RevealFx translateY="8" delay={0.35}>
+          <Row gap="12" horizontal="center" wrap style={{ maxWidth: "720px", width: "100%", margin: "11px auto 0" }}>
+            {routes["/"] && <NavBtn href="/" label="Home" />}
+            {routes["/about"] && <NavBtn href="/about" label={about.label} />}
+            {routes["/work"] && <NavBtn href="/work" label={work.label} />}
+            {routes["/blog"] && <NavBtn href="/blog" label="Blog" />}
+            {routes["/gallery"] && <NavBtn href="/gallery" label={gallery.label} />}
+<ChatTriggerBtn />
+          </Row>
+        </RevealFx>
+      </Column>
       {routes["/blog"] && (
         <Column fillWidth gap="24" marginBottom="l">
           <Row fillWidth paddingRight="64">
@@ -119,7 +133,6 @@ export default function Home() {
           </Row>
         </Column>
       )}
-      <Projects range={[2]} />
       <Mailchimp />
     </Column>
   );

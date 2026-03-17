@@ -37,6 +37,12 @@ export function ChatWidget() {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    const handler = () => setIsOpen(true);
+    window.addEventListener("open-chat", handler);
+    return () => window.removeEventListener("open-chat", handler);
+  }, []);
+
   async function sendMessage() {
     const text = input.trim();
     if (!text || isLoading) return;

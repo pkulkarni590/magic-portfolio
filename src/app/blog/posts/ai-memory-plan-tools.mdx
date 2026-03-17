@@ -1,0 +1,42 @@
+---
+title: "I Gave an AI a Memory, a Plan, and a Set of Tools. Here Is What Happened."
+summary: "A product manager's honest account of building with LangChain and what it taught me about where AI products actually break."
+publishedAt: "2025-02-20"
+tag: "AI"
+---
+
+There is a version of the AI product story that gets told a lot. Developer discovers large language model, builds something impressive in a weekend, raises seed round, appears on podcast. That story is real, but it leaves out the part that comes after the weekend. The part where the thing you built stops working in ways you did not anticipate, for reasons that take you longer than you would like to admit to understand.
+
+I want to tell that part of the story.
+
+I came to LangChain the way most people do. I had a product idea that required an AI that could do more than answer a single question. I needed something that could remember context across a conversation, call external tools when it needed information it did not have, and execute multi-step reasoning without losing the thread. GPT-4 alone could not do that reliably. LangChain could, in theory, be the scaffolding that made it possible.
+
+LangChain, for those who have not encountered it, is a framework for building applications with language models. The core insight is deceptively simple. Language models are powerful but stateless. They do not remember what you told them five minutes ago unless you tell them again. They cannot browse the web or query a database unless you give them a tool to do so. And they cannot execute a plan with multiple steps unless something orchestrates those steps. LangChain provides the memory, the tools, and the orchestration. It is the connective tissue between what a model can do and what a product needs it to do.
+
+The first thing I built was a research assistant. The kind that could take a question, break it into sub-questions, search for answers to each, synthesize what it found, and return something coherent. Simple enough conceptually. The implementation was a different experience.
+
+The chain worked beautifully about seventy percent of the time. The other thirty percent was a graduate seminar in how language models fail. Sometimes the model would get confused mid-chain and start answering a sub-question as if it were the original question. Sometimes the retrieval step would pull documents that were technically relevant but practically useless, and the model would synthesize them into something that sounded authoritative but was wrong in subtle ways. Sometimes the agent would decide, on its own, to call a tool three times in a row for no reason I could identify, burning tokens and time on a loop that added nothing.
+
+These are not bugs in the traditional sense. There is no line of code you can fix. They are emergent behaviors of systems that reason probabilistically, and managing them requires a different mental model than traditional software engineering.
+
+This is where the product manager in me started to separate from the engineer in me.
+
+The engineer wanted to fix the failures. The product manager needed to understand which failures mattered and which ones users would never notice. That distinction sounds obvious, but it is genuinely hard to make in practice when you are building something new and every failure feels significant.
+
+LangChain has evolved significantly since I first encountered it. The introduction of LangGraph, which models agent workflows as graphs rather than linear chains, changed how I thought about orchestration. Instead of writing a chain that executed step one then step two then step three, I could define states and transitions and let the system decide which path to take based on what it had learned so far. It felt less like programming and more like designing a decision process, which is, not coincidentally, something product managers are supposed to be good at.
+
+The agents I built with LangGraph were more robust. They could handle ambiguity better. They could recover from partial failures without abandoning the entire task. But they were also harder to debug, because the path through the graph was not always predictable, and understanding why an agent made a particular decision required tracing through state transitions that were not always transparent.
+
+This is the central tension in agentic AI development right now. The more capable you make a system, the less legible it becomes. The less legible it is, the harder it is to trust in production. And trust is the thing that actually determines whether a product ships or stays in a demo.
+
+What I learned, more than any specific technical lesson, is that building with AI is fundamentally a product problem dressed up as an engineering problem. The hardest questions are not about which model to use or how to structure a prompt. They are about what the system should do when it is uncertain, how it should communicate its limitations to a user who does not understand what an embedding is, and where the boundary sits between what the AI should decide on its own and what it should defer to a human.
+
+Those questions do not have answers in the LangChain documentation. They are the questions that make this work interesting, and genuinely hard, and worth doing.
+
+The tools are getting better fast. LangChain is not the only framework in this space anymore. LlamaIndex has carved out a strong position in retrieval augmented generation. AutoGen from Microsoft is pushing the boundaries of multi-agent systems. CrewAI is making it easier to build teams of specialized agents that collaborate on complex tasks. The ecosystem is expanding at a pace that makes it difficult to keep up with and impossible to ignore.
+
+But underneath all of it, the same fundamental challenge remains. You are building products on top of systems that are powerful, probabilistic, and not fully understood, even by the people who built them. That requires a kind of intellectual honesty about uncertainty that does not come naturally to an industry built on shipping features with confidence.
+
+The best AI products I have seen are built by people who have made peace with that uncertainty. Not by pretending the failures do not exist, but by designing around them thoughtfully, communicating them honestly, and iterating faster than the failures accumulate.
+
+That is, in the end, what product management has always been. The tools just got a lot more interesting.
