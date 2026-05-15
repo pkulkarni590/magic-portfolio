@@ -1,8 +1,8 @@
 # Prathmesh Kulkarni — Personal Portfolio
 
-> AI PM Intern · Builder · Ironman 70.3 Finisher
+> AI PM Intern · Software Development Engineer · Ironman 70.3 Finisher
 
-**Live:** [prathmeshkulkarni.com](https://prathmeshkulkarni.com) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/prathmesh-kulkarni) &nbsp;·&nbsp; [Email](mailto:pkulkarni590@gmail.com)
+**Live:** [prathmesh-kulkarni.vercel.app](https://prathmesh-kulkarni.vercel.app) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/prathmesh-kulkarni) &nbsp;·&nbsp; [Email](mailto:pkulkarni590@gmail.com)
 
 ---
 
