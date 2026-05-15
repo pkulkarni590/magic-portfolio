@@ -10,22 +10,24 @@ interface Project {
   description: string;
   tags: string[];
   link?: string;
+  timeframe?: string;
 }
 
 const projects: Project[] = [
   {
-    title: "Trax Project",
+    title: "LLM-Powered Code Review Assistant",
     description:
-      "Placeholder — add your Trax project description here.",
-    tags: ["Product Management", "AI"],
+      "Built an LLM and machine learning powered code review tool in Python and Go that analyzes pull requests, flags violations, and suggests algorithmic improvements, deployed on GCP with a scalable microservices architecture. Applied data structures and algorithms to optimize AST parsing, reducing code analysis time by 60%, while handling 500+ concurrent review requests.",
+    tags: ["Python", "Go", "LLMs", "Machine Learning", "GCP"],
+    timeframe: "Dec 2025 – Mar 2026",
   },
   {
-    title: "Johns Hopkins Hospital Project",
+    title: "Scalable Distributed File Sync Engine",
     description:
-      "Placeholder — add your Johns Hopkins Hospital project description here.",
-    tags: ["Healthcare", "Data"],
+      "Designed a distributed file synchronization system in Python and C++ using consistent hashing and priority queues to handle concurrent writes across 10+ nodes with zero data loss. Built a scalable AWS architecture using S3 and SQS with chunked parallel uploads, reducing sync latency by 40% and improving throughput by 3x under peak traffic.",
+    tags: ["Python", "C++", "AWS", "System Design"],
+    timeframe: "Aug 2025 – Dec 2025",
   },
-  // Add more projects here
 ];
 
 export function WorkPageContent() {
@@ -140,21 +142,35 @@ export function WorkPageContent() {
         )}
 
         {active === "projects" && (
-          <Column fillWidth gap="l">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "16px",
+            }}
+          >
             {projects.map((project, index) => (
-              <Column
+              <div
                 key={index}
-                fillWidth
-                padding="l"
-                border="neutral-alpha-weak"
-                radius="m"
-                background="surface"
-                gap="m"
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  padding: "24px",
+                  border: "1px solid var(--neutral-alpha-weak)",
+                  borderRadius: "12px",
+                  background: "var(--background-surface)",
+                  gap: "12px",
+                }}
               >
-                <Heading as="h3" variant="heading-strong-l">
+                {project.timeframe && (
+                  <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    {project.timeframe}
+                  </Text>
+                )}
+                <Heading as="h3" variant="heading-strong-m">
                   {project.title}
                 </Heading>
-                <Text variant="body-default-m" onBackground="neutral-weak">
+                <Text variant="body-default-s" onBackground="neutral-weak" style={{ flex: 1 }}>
                   {project.description}
                 </Text>
                 <Row wrap gap="8">
@@ -164,9 +180,9 @@ export function WorkPageContent() {
                     </Tag>
                   ))}
                 </Row>
-              </Column>
+              </div>
             ))}
-          </Column>
+          </div>
         )}
       </div>
     </Column>
