@@ -1,6 +1,6 @@
 # Prathmesh Kulkarni — Personal Portfolio
 
-> AI PM Intern · Software Development Engineer · Ironman 70.3 Finisher
+> AI PM Intern · Builder · Ironman 70.3 Finisher
 
 **Live:** [prathmesh-kulkarni.vercel.app](https://prathmesh-kulkarni.vercel.app) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/prathmesh-kulkarni) &nbsp;·&nbsp; [Email](mailto:pkulkarni590@gmail.com)
 
@@ -29,7 +29,7 @@ My personal portfolio — built to show who I am, what I've built, and how I thi
 
 - **Next.js 16** — App Router, server + client components
 - **Once UI** — Component library for layout and design
-- **Groq API** (`qwen-qwq-32b`) — Powers the AI chat widget in production
+- **Groq API** (`llama-3.3-70b-versatile`) — Powers the AI chat widget in production
 - **Ollama** — Local LLM for development
 - **Nodemailer + Gmail SMTP** — Contact form email delivery
 - **Vercel** — Deployment
