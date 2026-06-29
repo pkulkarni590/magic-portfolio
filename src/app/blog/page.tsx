@@ -108,18 +108,9 @@ export default function Blog() {
                     overflow: "hidden",
                     border: "1px solid rgba(255,255,255,0.07)",
                     background: "rgba(255,255,255,0.03)",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(-6px)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "0 20px 60px rgba(0,0,0,0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
-                    (e.currentTarget as HTMLElement).style.boxShadow = "none";
                   }}
                 >
                   {/* Image */}
@@ -224,6 +215,13 @@ export default function Blog() {
         }
         @media (max-width: 560px) {
           .blog-grid { grid-template-columns: 1fr !important; }
+        }
+        .blog-card {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .blog-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         .blog-card:hover .blog-card-img {
           transform: scale(1.05);
